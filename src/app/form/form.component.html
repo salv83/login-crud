@@ -1,0 +1,30 @@
+<form novalidate (submit)="save(f)" #f="ngForm" class="card-body">
+
+  <input type="text" [ngModel]="active?.title" name="title" required class="form-control bg-dark text-white m-1"
+    placeholder="Product Title *">
+
+  <input type="text" [ngModel]="active?.price" name="price" class="form-control bg-dark text-white m-1"
+    placeholder="Price *">
+
+  <input type="text" [ngModel]="active?.date_created" name="date_created" class="form-control bg-dark text-white m-1"
+    placeholder="Data Created *">
+
+  <input type="text" [ngModel]="active?.description" name="description" required
+    class="form-control bg-dark text-white m-1" placeholder="Description *">
+
+  <input type="file" name="image" class="form-control bg-dark text-white" (change)="readUrl($event,f)">
+
+  <img *ngIf="active?.image" [src]="active?.image" class="img-thumbnail" width="200">
+
+  <div class="btn-group btn-group-sm m-1">
+    <button class="btn btn-warning" type="submit" [disabled]="f.invalid">
+      {{active?.id ? 'SAVE' : 'ADD'}}
+    </button>
+    <button class="btn btn-light" type="button" *ngIf="active?.id" (click)="delete(active)">
+      DELETE
+    </button>
+    <button class="btn btn-light" type="button" *ngIf="active?.id" (click)="reset()">
+      RESET
+    </button>
+  </div>
+</form>

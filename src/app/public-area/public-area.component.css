@@ -1,0 +1,4 @@
+.mat-card{
+    max-width: calc(25% - 16px);
+    margin-top:5px;
+}

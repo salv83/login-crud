@@ -1,0 +1,20 @@
+.list__img{
+    max-width:100%;
+}
+
+.list__item_selected{
+    background-color:#ffa50085;
+}
+
+.mat-card{
+    max-width: calc(25% - 16px);
+    margin-top:5px;
+}
+
+.userbox{
+    width: 50%;
+    margin: 0 auto;
+    border: 1px solid;
+    margin-top: 20px;
+    margin-bottom: 2px;
+}

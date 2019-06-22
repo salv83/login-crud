@@ -1,0 +1,11 @@
+table {
+    width: 100%;
+  }
+  .usercolumn{
+    float:left;
+  }
+
+  .list__item_selected{
+    background-color:#00a1ffc4;
+    color:white;
+}

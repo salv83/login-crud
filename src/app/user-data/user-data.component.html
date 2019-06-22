@@ -1,0 +1,23 @@
+<h3>User Data</h3>
+<div *ngFor="let user of users" class="list-group-item list-group-item-action" [ngClass]="{'bg-warning text-dark' : user.id === selected?.id}" (click)="setActive(user)"> 
+    <strong>ID</strong>: {{user.id}} <br>
+    <strong>Username</strong>: {{user.username}} <br>
+    <strong>Password</strong>: {{user.password}} <br>
+    Click here to edit
+</div>
+<form *ngIf="selected" novalidate (submit)="save(form)" #form="ngForm" class="card-body">
+    <input type="text" [ngModel]="selected.username" name="username" required class="form-control bg-light text-black m-1"
+      placeholder="Username*">
+  
+    <input type="text" [ngModel]="selected?.password" name="password" class="form-control bg-light text-black m-1"
+      placeholder="Password *">
+  
+    <div class="btn-group btn-group-sm m-1">
+      <button class="btn btn-warning" type="submit" [disabled]="form.invalid">
+        SAVE
+      </button>
+      <button class="btn btn-light" type="button" *ngIf="selected?.id" (click)="reset()">
+        RESET
+      </button>
+    </div>
+</form>

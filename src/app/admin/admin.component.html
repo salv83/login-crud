@@ -1,0 +1,14 @@
+<div *ngIf="permissions; else notadministrator">
+<app-admin-form  [users]="users" [user]="user" [selectedUser]="selectedUser" (adminformEvent)="goAdminForm($event)"></app-admin-form>
+<div class="card bg-dark text-white mb-3">
+  <div *ngFor="let user of users" [ngClass]="{'list__item_selected' : user.id === selectedUser?.id}"  class="list-group-item list-group-item-action" (click)="selectUser(user)">
+      <div class="usercolumn col-md-3">{{user.id}}</div>
+      <div class="usercolumn col-md-3">{{user.username}}</div>
+      <div class="usercolumn col-md-3">{{user.password}}</div>
+      <div class="usercolumn col-md-3">{{user.role}}</div>
+  </div>
+</div>
+</div>
+<ng-template #notadministrator>
+    <h1>You must be administrator to access to this page.</h1>
+  </ng-template>

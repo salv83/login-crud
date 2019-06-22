@@ -1,0 +1,38 @@
+<mat-toolbar color="primary">
+  <span>Products List</span>
+</mat-toolbar>
+<div class="userbox">
+    <app-user-data></app-user-data>
+</div>
+<mat-toolbar color="primary">
+    <div>
+        <form #searchForm="ngForm" class="form-inline my-2 my-lg-0" (submit)="search(searchForm)">
+            <input [ngModel]="searchvalue" name="searchvalue" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
+          </form>
+    </div>
+
+    <div style="margin-left:50px;">
+        <label>Select a sorting Filter:</label>
+        <select [ngModel]="selectedItem" (ngModelChange)="onChange($event)">
+            <option value="title">Order by title</option>
+            <option value="price">Order by price</option>
+            <option value="data_created">Order by data_created</option>
+          </select>
+    </div>
+</mat-toolbar>
+<app-form [products]="products" [product]="product" [active]="active" (formEvent)="goForm($event)"></app-form>
+<div class="page-wrapper">
+  <div fxLayout="row wrap" fxLayoutGap="16px">
+    <mat-card fxFlex="calc(25% - 16px)" *ngFor="let product of products"
+      [ngClass]="{'list__item_selected' : product.id === active?.id}" (click)="setActive(product)" >
+      <mat-card-header>
+        <mat-card-title>{{product.title}}</mat-card-title>
+        <mat-card-subtitle>{{product.date_created}}</mat-card-subtitle>
+        <mat-card-subtitle>{{product.price}} €</mat-card-subtitle>
+      </mat-card-header>
+      <img matCardImage src="{{product.image}}">
+      <mat-card-content>{{product.description}}</mat-card-content>
+    </mat-card>
+  </div>
+</div>

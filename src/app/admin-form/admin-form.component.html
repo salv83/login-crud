@@ -1,0 +1,19 @@
+<form novalidate (submit)="save(f)" #f="ngForm" class="card-body">
+  <input type="text" [ngModel]="selectedUser?.username" name="username" required class="form-control bg-dark text-white m-1"
+    placeholder="Username *">
+  <input type="text" [ngModel]="selectedUser?.password" name="password" class="form-control bg-dark text-white m-1"
+    placeholder="Password *">
+  <input type="number" min="0" max="1" [ngModel]="selectedUser?.role" name="role" class="form-control bg-dark text-white m-1"
+    placeholder="Role *">
+  <div class="btn-group btn-group-sm m-1">
+    <button class="btn btn-warning" type="submit" [disabled]="f.invalid">
+      {{selectedUser?.id ? 'SAVE' : 'ADD'}}
+    </button>
+    <button class="btn btn-light" type="button" *ngIf="selectedUser?.id" (click)="delete(selectedUser)">
+      DELETE
+    </button>
+    <button class="btn btn-light" type="button" *ngIf="selectedUser?.id" (click)="reset()">
+      RESET
+    </button>
+  </div>
+</form>
